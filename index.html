@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Enlaces</title>
+<style>
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:'Segoe UI',system-ui,sans-serif;
+    background:#f8fafc; color:#1e293b; padding:24px;
+    display:flex; flex-direction:column; align-items:center;
+    min-height:100vh;
+  }
+  h1{
+    font-size:22px; margin:0 0 24px; color:#2563eb;
+    text-align:center;
+  }
+  .links{
+    display:flex; flex-direction:column; gap:14px;
+    width:100%; max-width:480px;
+  }
+  .link-btn{
+    display:block;
+    padding:18px 24px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:700;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(37,99,235,.3);
+    transition:.15s;
+    word-break:break-word;
+  }
+  .link-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(37,99,235,.4);
+  }
+  .link-btn:active{
+    transform:translateY(0);
+  }
+  .loading, .error{
+    text-align:center; color:#6b7280;
+    font-size:14px; padding:20px;
+  }
+  .error{color:#dc2626;}
+</style>
+</head>
+<body>
+
+<h1>🔗 Mis Enlaces</h1>
+
+<div class="links" id="linksContainer">
+  <div class="loading">Cargando enlaces...</div>
+</div>
+
+<script>
+const JSON_URL = 'https://raw.githubusercontent.com/mastersonnic/enlace/main/enlaces.json';
+
+fetch(JSON_URL)
+  .then(res => {
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    return res.json();
+  })
+  .then(data => {
+    const container = document.getElementById('linksContainer');
+    container.innerHTML = '';
+
+    if(!data.links || data.links.length === 0){
+      container.innerHTML = '<div class="loading">No hay enlaces todavía.</div>';
+      return;
+    }
+
+    data.links.forEach(link => {
+      const a = document.createElement('a');
+      a.className = 'link-btn';
+      a.href = link.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = link.name;
+      container.appendChild(a);
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById('linksContainer').innerHTML =
+      '<div class="error">❌ Error al cargar los enlaces.<br>Revisa que el archivo enlaces.json existe y está bien formado.</div>';
+  });
+</script>
+
+</body>
+  </html>
