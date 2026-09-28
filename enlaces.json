@@ -1,8 +1,7 @@
 {
   "links": [
-    { "name": "🌐 Google", "url": "https://google.com" },
-    { "name": "📊 CoinGecko", "url": "https://coingecko.com" },
-    { "name": "💻 Mi GitHub", "url": "https://github.com/mastersonnic" },
+    { "name": "🌐 Google", "url": "https://google.com" }
+    { "name": "💻 Enlace Peliculas", "url": "https://mastersonnic.github.io/link/#t=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&g=639b651de4d26a48a5d68bb267f4ef2d" },
     { "name": "⛏️ Panel de Faucets", "url": "https://mastersonnic.github.io/Faucets/" }
   ]
 }
