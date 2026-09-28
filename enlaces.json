@@ -1,0 +1,8 @@
+{
+  "links": [
+    { "name": "🌐 Google", "url": "https://google.com" },
+    { "name": "📊 CoinGecko", "url": "https://coingecko.com" },
+    { "name": "💻 Mi GitHub", "url": "https://github.com/mastersonnic" },
+    { "name": "⛏️ Panel de Faucets", "url": "https://mastersonnic.github.io/Faucets/" }
+  ]
+}
